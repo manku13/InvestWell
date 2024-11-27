@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-@y!jpq*y5dcrq@_gznoa2us6f@t(%@p%(oyt&p@tmi^e&5vy+j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['192.168.29.1', "localhost", "127.0.0.1"]
 
 # Application definition
 
@@ -44,7 +44,9 @@ INSTALLED_APPS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "exp://192.168.29.45:8081",  # Replace with your React Native app's IP and port
+    "http://localhost:8081",
+    "http://192.168.29.1:8081",
+    "http://127.0.0.1:8081"    # Replace with your Expo's IP and port
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
@@ -58,6 +60,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # Add this line
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'investwell.urls'
